@@ -8,32 +8,31 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h2>Calculator</h2>
     <div class="main">
         <input type="text" name="" id="entry" class="entry" value="0" readonly>
 
         <div class="calculator-grid">
-            <button class="calc-button span3 redback">AC</button>
-            <button class="calc-button">&divide;</button>
+            <button class="calc-button span3 redback" onclick="clearScreen()">AC</button>
+            <button class="calc-button" onclick="operPress('/')">/</button>
 
-            <button class="calc-button">7</button>
-            <button class="calc-button">8</button>
-            <button class="calc-button">9</button>
-            <button class="calc-button">&times;</button>
+            <button class="calc-button" onclick="numbPress('7')">7</button>
+            <button class="calc-button" onclick="numbPress('8')">8</button>
+            <button class="calc-button" onclick="numbPress('9')">9</button>
+            <button class="calc-button" onclick="operPress('*')">*</button>
 
-            <button class="calc-button">4</button>
-            <button class="calc-button">5</button>
-            <button class="calc-button">6</button>
-            <button class="calc-button">&plus;</button>
+            <button class="calc-button" onclick="numbPress('4')">4</button>
+            <button class="calc-button" onclick="numbPress('5')">5</button>
+            <button class="calc-button" onclick="numbPress('6')">6</button>
+            <button class="calc-button" onclick="operPress('+')">+</button>
 
-            <button class="calc-button">1</button>
-            <button class="calc-button">2</button>
-            <button class="calc-button">3</button>
-            <button class="calc-button">&minus;</button>
+            <button class="calc-button" onclick="numbPress('1')">1</button>
+            <button class="calc-button" onclick="numbPress('2')">2</button>
+            <button class="calc-button" onclick="numbPress('3')">3</button>
+            <button class="calc-button" onclick="operPress('-')">-</button>
 
-            <button class="calc-button">0</button>
-            <button class="calc-button">.</button>
-            <button class="calc-button span2 greenback">&equals;</button>
+            <button class="calc-button" onclick="numbPress('0')">0</button>
+            <button class="calc-button" onclick="numbPress('.')">.</button>
+            <button class="calc-button span2 greenback" onclick="equalPress()">=</button>
         </div>
     </div>
     <script src="script.js"></script>

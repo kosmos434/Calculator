@@ -1,63 +1,80 @@
-const keys = document.querySelectorAll(".calc-button");
+let screen = document.getElementById("entry");
 
 let prevVal = "";
 let newVal = "";
-let result = "";
-let operator = "";
+let resultVal = "";
+let operatorVal = "";
 let decimalClicked = false;
 
-
- keys.forEach((button) => {
-     button.addEventListener('click', () => {
-         console.log("Clicked :)");
-     });
- });
-
-
 function numbPress(num) {
+  if (resultVal) {
+    newVal = num;
+    resultVal = "";
+  } else if (num === ".") {
+    if (decimalClicked != true) {
+      newVal += num;
+      decimalClicked = true;
+    }
+  } else {
+    newVal += num;
+  }
 
+  screen.value = newVal;
 }
 
-function operPress(operator) {
+// if (num === '.') {
+//     if (decimalClicked != true) {
+//       newVal += num;
+//       decimalClicked = true;
+//     } else {
+//       newVal += num;
+//     }
 
+function operPress(operator) {
+  if (!resultVal) {
+    prevVal = newVal;
+  } else {
+    prevVal = resultVal;
+  }
+  newVal = "";
+  resultVal = "";
+  decimalClicked = false;
+  operatorVal = operator;
+  screen.value = operatorVal;
 }
 
 function equalPress() {
+  decimalClicked = false;
+  prevVal = parseFloat(prevVal);
+  newVal = parseFloat(newVal);
 
-}
+  switch (operatorVal) {
+    case "+":
+      resultVal = prevVal + newVal;
+      break;
+    case "-":
+      resultVal = prevVal - newVal;
+      break;
+    case "*":
+      resultVal = prevVal * newVal;
+      break;
+    case "/":
+      resultVal = prevVal / newVal;
+      break;
+    default:
+      resultVal = newVal;
+  }
 
+  prevVal = newVal;
 
-function adding(a, b) {
-    return a + b;
-}
-
-function subtracting(a, b) {
-    return a - b;
-}
-
-function multiplying(a, b) {
-    return a * b;
-}
-
-function dividing(a, b) {
-    return a / b;
-}
-
-function operate(operator, num1, num2) {
-    operator(num1, num2);
+  screen.value = resultVal;
 }
 
 function clearScreen() {
-    prevVal = "";
-    newVal = "";
-    result = "";
-    operator = "";
-    decimalClicked = false;
-    document.getElementById("entry").value = "0";
+  prevVal = "";
+  newVal = "";
+  resultVal = "";
+  operatorVal = "";
+  decimalClicked = false;
+  screen.value = "0";
 }
-
-// TO DO
-// Query Select Keys
-// Update display function
-// Clear function
-// 
